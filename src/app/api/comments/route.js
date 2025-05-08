@@ -8,7 +8,7 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-  const { postId, content } = await request.json();
-  const newComment = await addComment(postId, content);
-  return Response.json(newComment);
+  const { postId, content, parentId } = await request.json();
+  const comment = await addComment(postId, content, parentId || null);
+  return Response.json(comment, { status: 201 });
 }

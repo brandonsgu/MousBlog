@@ -1,4 +1,10 @@
 import { createPost } from '@/lib/posts-data';
+import { getPosts } from '@/lib/posts-data';
+
+export async function GET() {
+  const posts = await getPosts();
+  return Response.json(posts);
+}
 
 export async function POST(request) {
   try {

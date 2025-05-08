@@ -2,8 +2,13 @@
 import pool from './db';
 
 export async function getPosts() {
-  const [posts] = await pool.query('SELECT * FROM posts ORDER BY created_at DESC');
-  return posts;
+  try {
+    const [posts] = await pool.query('SELECT * FROM posts ORDER BY created_at DESC');
+    return posts;
+  } catch (error) {
+    console.error('❌ Error in getPosts:', error);
+    throw error;
+  }
 }
 
 // Add this function if missing

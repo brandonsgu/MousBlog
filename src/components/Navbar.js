@@ -37,8 +37,9 @@ export default function Navbar() {
   return (
     <nav className="bg-gray-900 text-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6 relative">
-        <Link href="/" className="text-2xl font-bold text-white hover:text-blue-400 transition">
-          🐭 MouseBlog
+        <Link href="/" className="flex items-center gap-2 text-white hover:text-blue-400 transition">
+          <img src="/logo.png" alt="Logo" className="w-6 h-6 object-contain" />
+          <span className="text-xl font-bold">MouseBlog</span>
         </Link>
 
         <div className="relative w-full max-w-md">
@@ -54,7 +55,11 @@ export default function Navbar() {
           {results.length > 0 && (
             <ul className="absolute top-full left-0 right-0 bg-white text-black shadow-lg mt-1 rounded-md max-h-60 overflow-y-auto z-50">
               {results.map(post => (
-                <li key={post.id} className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={() => router.push(`/post/${post.id}`)}>
+                <li
+                  key={post.id}
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={() => router.push(`/post/${post.id}`)}
+                >
                   🔍 {post.title} <span className="text-xs text-gray-500">by {post.author}</span>
                 </li>
               ))}
